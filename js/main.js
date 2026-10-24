@@ -6,6 +6,10 @@ var CAMPAIGN = {
 // Runs before DOMContentLoaded so post-fair visitors never see a flash of campaign content.
 if (Date.now() > CAMPAIGN.ends.getTime()) document.documentElement.classList.add('campaign-over');
 
+window.addEventListener('load', function () {
+  setTimeout(function () { document.documentElement.classList.add('smooth-scroll'); }, 0);
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Campaign state ---------- */
@@ -41,6 +45,19 @@ document.addEventListener('DOMContentLoaded', function () {
      cached-offset library would). Content is opacity:1 by default in CSS;
      this only ever ADDS visibility, and a safety-net timeout guarantees
      everything is visible even if something above fails. */
+  // Grids: left column slides in from the left, right column from the right, middle rises (no stagger, like the reference site).
+  document.querySelectorAll('.js-col-reveal').forEach(function (grid) {
+    var items = Array.prototype.slice.call(grid.children);
+    var lefts = [];
+    items.forEach(function (el) { if (lefts.indexOf(el.offsetLeft) < 0) lefts.push(el.offsetLeft); });
+    lefts.sort(function (a, b) { return a - b; });
+    var last = lefts.length - 1;
+    items.forEach(function (el) {
+      var col = lefts.indexOf(el.offsetLeft);
+      el.setAttribute('data-aos', last < 1 ? 'fade-up' : col === 0 ? 'fade-right' : col === last ? 'fade-left' : 'fade-up');
+    });
+  });
+
   var revealEls = document.querySelectorAll('[data-aos]');
   if (revealEls.length) {
     if ('IntersectionObserver' in window) {
@@ -58,9 +75,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       revealEls.forEach(function (el) { el.classList.add('in'); });
     }
-    // Safety net: force-reveal anything left behind (e.g. odd layout edge cases)
+    // Safety net: force-reveal anything on screen that the observer missed; content further down still animates on scroll
     setTimeout(function () {
-      revealEls.forEach(function (el) { el.classList.add('in'); });
+      revealEls.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+      });
     }, 2500);
   }
 
