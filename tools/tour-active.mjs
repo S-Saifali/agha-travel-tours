@@ -117,18 +117,5 @@ ${excluded.map((t) => `            <li><i class="fa-solid fa-xmark"></i> ${esc(t
       <div class="ta-why" data-aos="fade-up">
         <h3>Why Choose Agha Travel &amp; Tours?</h3>
         <p>With proven experience in organizing international group tours, Agha Travel &amp; Tours provides professionally planned itineraries, quality accommodation, comfortable transportation, visa assistance, and dedicated customer support. Our experienced team and China-based business guides ensure a smooth, enjoyable, and rewarding travel experience.</p>
-      </div>
-
-      <div class="ta-book" data-aos="zoom-in">
-        <div>
-          <span class="ta-seats"><i class="fa-solid fa-fire"></i> Limited group seats</span>
-          <h3>Book Your China Adventure Today!</h3>
-          <p>Contact us for booking and availability. Experience China like never before: travel, explore, connect, and grow.</p>
-        </div>
-        <div class="ta-book-actions">
-          <a href="${book}" target="_blank" class="cv-cta-wa"><span class="ic"><i class="fa-brands fa-whatsapp"></i></span><span><small>Chat to book</small><b>+92 300 3848172</b></span><i class="fa-solid fa-arrow-right go"></i></a>
-          <a href="tel:+923003848172" class="cv-cta-call"><span class="ic"><i class="fa-solid fa-phone"></i></span><span><small>Call us</small><b>+92 300 3848172</b></span></a>
-          <p class="ta-addr"><i class="fa-solid fa-location-dot"></i> Office No. 19, 2nd Floor, Twin City Plaza, I-8 Markaz, Islamabad<br><i class="fa-solid fa-globe"></i> www.aghatravelandtours.com</p>
-        </div>
       </div>`;
 };

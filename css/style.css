@@ -1598,7 +1598,6 @@ body.lb-open{ overflow:hidden; }
   background:rgba(200,16,46,.14); border:1px solid rgba(200,16,46,.35); color:#ff6b83;
   font-family:var(--font-head); font-weight:700; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase;
 }
-.ta-book .ta-seats{ color:#ffd2d9; }
 .ta-intro{ max-width:880px; margin:30px auto 0; text-align:center; font-size:1.02rem; }
 
 .ta-facts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:30px; }
@@ -1652,22 +1651,13 @@ body.lb-open{ overflow:hidden; }
 
 .ta-why{ margin-top:46px; padding:28px 30px; border-radius:22px; background:var(--off-white); border-left:5px solid var(--gold); }
 .ta-why h3{ font-size:1.25rem; margin-bottom:8px; }
-.ta-book{
-  position:relative; isolation:isolate; overflow:hidden; margin-top:30px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.9fr); gap:30px; align-items:center;
-  padding:40px; border-radius:26px; background:var(--dark); color:rgba(255,255,255,.76); box-shadow:0 30px 60px -30px rgba(23,24,28,.7);
-}
-.ta-book::after{ content:''; position:absolute; z-index:-1; width:420px; height:420px; right:-140px; top:-170px; border-radius:50%; background:radial-gradient(circle, rgba(242,167,28,.3), transparent 65%); }
-.ta-book h3{ color:#fff; font-size:1.7rem; margin-bottom:10px; }
-.ta-book-actions{ display:grid; gap:12px; }
-.ta-addr{ font-size:.82rem; line-height:1.7; color:rgba(255,255,255,.62); }
-.ta-addr i{ color:var(--gold); width:16px; }
 
 @media(max-width:991px){
   .ta-ticket{ grid-template-columns:minmax(0,1fr); }
   .ta-ticket::before, .ta-ticket::after{ display:none; }
   .ta-stub{ border-left:0; border-top:2px dashed rgba(255,255,255,.28); }
   .ta-facts, .ta-hl{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .ta-inc, .ta-book{ grid-template-columns:minmax(0,1fr); }
+  .ta-inc { grid-template-columns:minmax(0,1fr); }
 }
 @media(max-width:575px){
   .ta-main{ padding:24px 20px; }
@@ -1682,7 +1672,6 @@ body.lb-open{ overflow:hidden; }
   .ta-dcard:has(.ta-dimg){ grid-template-columns:minmax(0,1fr); }
   .ta-dimg{ order:0; height:160px; }
   .ta-dbody{ padding:16px; }
-  .ta-book{ padding:26px 20px; }
   .ta-h{ font-size:1.25rem; }
 }
 @media (prefers-reduced-motion: reduce){ .ta-line i{ animation:none; left:calc(50% - 8px); opacity:1; } }
