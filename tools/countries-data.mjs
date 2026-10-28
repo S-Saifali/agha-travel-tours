@@ -30,7 +30,7 @@ export const countries = [
   },
   {
     slug: 'canada', anchor: 'canada', cc: 'ca', name: 'Canada', card: 'Canada', visitName: 'Canada',
-    img: '1543962226-818f4301073f', imgAlt: 'Toronto skyline, Canada',
+    img: 'images/canada-toronto.jpg', imgAlt: 'CN Tower and Toronto skyline at dusk',
     hero: '1506104489822-562ca25152fe',
     visa: 'Visitor Visa (TRV)',
     purposes: ['Tourism', 'Family reunions', 'Eligible business visits'],
@@ -286,17 +286,11 @@ export const countries = [
   },
 ];
 
-// Order of the destination grid / marquee. China and Malaysia are rendered separately.
+// Order of the destination grid / marquee. China is rendered separately.
 export const china = {
   slug: 'china', anchor: 'china', cc: 'cn', card: 'China',
   img: '1569730193579-e4e4c901a64d', imgAlt: 'Canton Tower, Guangzhou',
   hero: '1508804185872-d7badad00f7d',
-  tours: '1508804052814-cd3ba865a116',
-  visa: 'M Business Visa & Group Tours',
+  visa: 'M Business Visa',
 };
 
-export const malaysia = {
-  anchor: 'malaysia', cc: 'my', card: 'Malaysia',
-  img: '1632383380175-812d44ec112b', imgAlt: 'Kuala Lumpur, Malaysia',
-  visa: 'Visit Visa',
-};

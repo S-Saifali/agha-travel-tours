@@ -1,12 +1,15 @@
 // Generates the country visa pages, the Services destination grid and the shared footer links.
 // Run from the project root:  node tools/build-country-pages.mjs
 import { readFileSync, writeFileSync } from 'fs';
-import { countries, china, malaysia, PERSONALISED, DISCLAIMER } from './countries-data.mjs';
+import { countries, china, PERSONALISED, DISCLAIMER } from './countries-data.mjs';
+import { tourJournal, lightbox } from './tour-gallery.mjs';
+import { tourActive } from './tour-active.mjs';
+const CAVEAT = '<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">' + String.fromCharCode(10);
 
-const WA = '923009493348';
+const WA = '923003848172';
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const wa = (text) => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
-const photo = (id, w) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+const photo = (id, w) => (id.startsWith('images/') ? id : `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`);
 const flag = (cc) => `https://flagcdn.com/w80/${cc}.png`;
 const pageFile = (c) => `${c.slug}-visa.html`;
 
@@ -48,6 +51,7 @@ const topbarAndHeader = `
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html" class="active">Visa Consultancy</a>
+      <a href="group-tours.html">Group Tours</a>
       <a href="china-business-visa.html" class="nav-china">China Visa <span class="pulse"><i class="fa-solid fa-fire"></i></span></a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -63,7 +67,7 @@ const topbarAndHeader = `
 export const FOOTER_VISA_LINKS = `<h5>Visa Services</h5>
       <ul>
         <li><a href="china-business-visa.html">China — Canton Fair 2026</a></li>
-        <li><a href="china-visa.html">China Visa &amp; Group Tours</a></li>
+        <li><a href="china-visa.html">China M Business Visa</a></li>
         <li><a href="usa-visa.html">United States</a></li>
         <li><a href="uk-visa.html">United Kingdom</a></li>
         <li><a href="canada-visa.html">Canada</a></li>
@@ -76,7 +80,7 @@ const footer = `
   <div class="container footer-grid">
     <div class="footer-about">
       <img src="images/logo-light.png" alt="Agha Travel & Tours">
-      <p>Visa Consultants · Study Consultants · Skilled Immigration · Work Permits & Visit Visas — based in Twin City Plaza, I-8 Markaz, Islamabad.</p>
+      <p>Visa Consultants · Study Consultants · Visit Visas & Appointment Facilitation — based in Twin City Plaza, I-8 Markaz, Islamabad.</p>
       <div class="social-row">
         <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -90,6 +94,7 @@ const footer = `
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Visa Consultancy</a></li>
+        <li><a href="group-tours.html">Group Tours</a></li>
         <li><a href="china-business-visa.html">China Business Visa</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -102,7 +107,7 @@ const footer = `
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Office 19, 2nd Floor, Twin City Plaza, I-8 Markaz, Islamabad, Pakistan</li>
         <li><i class="fa-solid fa-phone"></i> 051-2751302 / 2751332</li>
-        <li><i class="fa-brands fa-whatsapp"></i> +92 313 8242222</li>
+        <li><i class="fa-brands fa-whatsapp"></i> +92 300 3848172</li>
         <li><i class="fa-solid fa-envelope"></i> aghatravelntours@gmail.com</li>
       </ul>
     </div>
@@ -325,27 +330,24 @@ ${marquee(pageFile(c))}
 /* ---------------- China page ---------------- */
 function chinaPage() {
   const applyMsg = wa('Hello Agha Travel & Tours, I would like to apply for a China M Business Visa.');
-  const toursMsg = wa('Hello Agha Travel & Tours, please share details of your upcoming China group tours.');
   const faqs = [
     ['Do you handle company invitations and fair invitations?', 'Yes. We assist with M Visa applications supported by either type of invitation, subject to current requirements.'],
-    ['Are your China group tours business trips?', 'No. Our sightseeing group tours are tourism trips and use the appropriate tourism visa route.'],
     ['Can you help with Canton Fair applications?', 'Yes. We provide invitation-document guidance and visa file preparation assistance.'],
   ];
-  return head('China Visa & Group Tours from Pakistan — M Business Visa | Agha Travel & Tours', 'China M Business Visa with company or trade fair invitations, plus China tourism group tours, from Agha Travel & Tours, I-8 Markaz, Islamabad.')
+  return head('China M Business Visa from Pakistan | Agha Travel & Tours', 'China M Business Visa with company or trade fair invitations, including Canton Fair, from Agha Travel & Tours, I-8 Markaz, Islamabad.')
   + topbarAndHeader
   + hero({
-    bg: china.hero, crumb: 'China', cc: 'cn', kicker: 'China Visa & Group Tours',
-    h1: '<span>China</span> Visa &amp; Group Tours from Pakistan',
-    sub: 'China M Business Visa · Tourism Group Tours',
-    lead: 'Explore China for business or leisure with Agha Travel & Tours. We assist Pakistani travellers with China M Business Visa applications and organize guided group tours under the appropriate tourism visa category.',
-    chips: ['M Business Visa', 'Company Invitations', 'Trade Fair Invitations', 'Tourism Group Tours'],
-    ctas: `<a href="${applyMsg}" target="_blank" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Apply for China Visa</a>
-        <a href="${toursMsg}" target="_blank" class="btn btn-outline-light">Ask About Group Tours</a>`,
+    bg: china.hero, crumb: 'China', cc: 'cn', kicker: 'China M Business Visa',
+    h1: '<span>China M Business Visa</span> from Pakistan',
+    sub: 'Company invitations · Trade fair invitations',
+    lead: 'Visiting China for business? Agha Travel & Tours assists Pakistani travellers with China M Business Visa applications, supported by either a company invitation or a trade fair invitation.',
+    chips: ['M Business Visa', 'Company Invitations', 'Trade Fair Invitations', 'Canton Fair'],
+    ctas: `<a href="${applyMsg}" target="_blank" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Apply for China Visa</a>`,
   })
   + facts([
     ['fa-briefcase', 'Business travel', 'China M Visa'],
     ['fa-building', 'Invitation routes', 'Company or trade fair'],
-    ['fa-camera-retro', 'Leisure travel', 'Tourism group tours'],
+    ['fa-store', 'Trade fairs', 'Canton Fair & more'],
     ['fa-location-dot', 'Our office', 'I-8 Markaz, Islamabad'],
   ])
   + `
@@ -359,7 +361,7 @@ function chinaPage() {
       <p class="lead">Supplier meetings, factory visits, sourcing, trade negotiations or exhibitions: we provide end-to-end M Visa application assistance, tailored to your business purpose and supporting documents.</p>
       <div class="cv-glance">
         <h3><i class="fa-solid fa-users"></i> Who We Assist</h3>
-        <p>Business owners, importers, exporters, traders, company representatives, trade fair visitors and leisure travellers joining our China tourism groups.</p>
+        <p>Business owners, importers, exporters, traders, company representatives and trade fair visitors.</p>
       </div>
       <a href="china-business-visa.html" class="cv-campaign only-campaign">
         <span class="cv-campaign-text"><b><i class="fa-solid fa-fire"></i> Canton Fair 2026</b><span>Dedicated China Business Visa package for the 140th session</span></span>
@@ -395,31 +397,13 @@ function chinaPage() {
   </div>
 </section>
 
-<!-- Group tours -->
-<section class="section-pad china-section">
-  <div class="container china-wrap">
-    <div data-aos="fade-right">
-      <span class="eyebrow china-eyebrow"><i class="fa-solid fa-camera-retro"></i> China Tourism Group Tours</span>
-      <h2>Prefer to discover China as a tourist?</h2>
-      <p style="color:rgba(255,255,255,.72);margin:16px 0 12px;">Agha Travel &amp; Tours also organizes China group tours for leisure travel, with planned itineraries and coordinated group arrangements. These trips fall under the <b style="color:#fff">tourism category</b>, not the M Business Visa category.</p>
-      <p style="color:rgba(255,255,255,.72);margin-bottom:20px;">Depending on the tour package, arrangements may include:</p>
-      <div class="cv-chips">${['Hotels', 'Sightseeing', 'Local transportation', 'Guides', 'Visa application support'].map((p) => `<span>${p}</span>`).join('')}</div>
-      <a href="${toursMsg}" target="_blank" class="btn btn-china">Ask About Group Tours <i class="fa-solid fa-arrow-right"></i></a>
-      <p style="color:rgba(255,255,255,.5);font-size:.85rem;margin-top:14px;">Contact us for upcoming group dates, destinations, prices and inclusions.</p>
-    </div>
-    <div data-aos="fade-left">
-      <div class="china-media"><img src="${photo(china.tours, 1000)}" alt="The Great Wall of China through autumn trees" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
 <!-- Documents -->
 <section class="section-pad">
   <div class="container cv-docs">
     <div class="cv-docs-intro" data-aos="fade-right">
       <span class="eyebrow"><i class="fa-solid fa-folder-open"></i> Checklist</span>
       <h2>Common Documents</h2>
-      <p>The usual starting point for business and tourism applications. We confirm exactly what your category needs.</p>
+      <p>The usual starting point for a business visa application. We confirm exactly what your category needs.</p>
       <a href="${wa('Hello Agha Travel & Tours, please share the document checklist for a China visa.')}" target="_blank" class="btn btn-dark btn-sm"><i class="fa-brands fa-whatsapp"></i> Get My Checklist</a>
     </div>
     <div>${docList([{ items: [
@@ -427,7 +411,6 @@ function chinaPage() {
       'CNIC and relevant personal details',
       'Chinese company invitation or fair invitation for business applications, as applicable',
       'Business or employment documents where relevant',
-      'Tour itinerary and other tourism-related supporting documents for group travellers',
       'Any additional documents requested under the current visa rules',
     ] }])}
     </div>
@@ -439,9 +422,9 @@ function chinaPage() {
   <div class="container">
     <div class="section-head center" data-aos="fade-up">
       <h2>How Our Visa Assistance Works</h2>
-      <p>A clear process for business visitors and group tourists, without unnecessary paperwork or confusion.</p>
+      <p>A clear process for business visitors, without unnecessary paperwork or confusion.</p>
     </div>${steps([
-      ['Choose Your Travel Category', 'We review whether your trip is for commercial activities, an exhibition or tourism.'],
+      ['Choose Your Travel Category', 'We review whether your trip is for commercial activities or an exhibition.'],
       ['Prepare the Correct Documents', 'We provide a tailored checklist and review invitations, application details and relevant supporting documents.'],
       ['Application & Submission Guidance', 'We assist with form preparation and guide you through the applicable submission and appointment procedures.'],
       ['Decision & Travel Preparation', 'We explain the next steps and help you review the issued visa and travel arrangements.'],
@@ -458,15 +441,14 @@ function chinaPage() {
       <ul class="about-list">
         <li><i class="fa-solid fa-check"></i> M Business Visa assistance for both Chinese company and trade fair invitations</li>
         <li><i class="fa-solid fa-check"></i> Canton Fair and other exhibition-related application support</li>
-        <li><i class="fa-solid fa-check"></i> Organized China group tours for tourism travellers</li>
         <li><i class="fa-solid fa-check"></i> Practical document review and clear guidance from start to finish</li>
       </ul>
     </div>
     <div class="cv-info" data-aos="fade-left">
       <h3>Important Information</h3>
-      <div class="cv-info-row"><span class="ic"><i class="fa-solid fa-passport"></i></span><div><b>Visa category</b><p>M Visa for eligible commercial and trade visits; appropriate tourism visa category for leisure group tours.</p></div></div>
+      <div class="cv-info-row"><span class="ic"><i class="fa-solid fa-passport"></i></span><div><b>Visa category</b><p>M Visa for eligible commercial and trade visits.</p></div></div>
       <div class="cv-info-row"><span class="ic"><i class="fa-solid fa-calendar-days"></i></span><div><b>Visa validity, entries and permitted stay</b><p>Depend on the visa granted.</p></div></div>
-      <div class="cv-info-row"><span class="ic"><i class="fa-solid fa-money-bill-wave"></i></span><div><b>Fees and processing</b><p>Vary according to current official rules, application circumstances and submission arrangements. Neither an invitation nor a tour booking guarantees visa approval.</p></div></div>
+      <div class="cv-info-row"><span class="ic"><i class="fa-solid fa-money-bill-wave"></i></span><div><b>Fees and processing</b><p>Vary according to current official rules, application circumstances and submission arrangements. An invitation does not guarantee visa approval.</p></div></div>
     </div>
   </div>
 </section>
@@ -477,7 +459,7 @@ function chinaPage() {
     <div class="faq-layout">
       <div class="faq-intro" data-aos="fade-up">
         <h2>China Visa <span class="marker">Questions</span></h2>
-        <p>Quick answers about invitations, tours and the Canton Fair. Can't find yours? Ask us directly.</p>
+        <p>Quick answers about invitations and the Canton Fair. Can't find yours? Ask us directly.</p>
         <div class="faq-help">
           <span class="faq-help-mark" aria-hidden="true">?</span>
           <h4>Still have a question?</h4>
@@ -504,7 +486,7 @@ ${marquee('china-visa.html')}
     titleHtml: 'Start Your <span>China Journey</span>',
     text: 'Agha Travel & Tours — Your Final Destination. Visit us at Office 19, 2nd Floor, Twin City Plaza, I-8 Markaz, Islamabad, or message us to get started.',
     bg: china.hero, waHref: applyMsg, waLabel: 'Apply for China Visa',
-    link: { href: toursMsg, external: true, label: 'Ask about China group tours' },
+    link: { href: 'china-business-visa.html', label: 'See the Canton Fair 2026 package' },
   })
   + footer;
 }
@@ -531,7 +513,6 @@ function destinationsSection() {
   const cards = [
     destCard({ id: china.anchor, href: 'china-visa.html', img: china.img, imgAlt: china.imgAlt, cc: 'cn', name: 'China', sub: china.visa, btn: 'View Visa Details' + arrow, cls: ' is-featured', badge: '<span class="dest-badge"><i class="fa-solid fa-fire"></i> Canton Fair 2026</span>\n            ' }),
     ...countries.map((c) => destCard({ id: c.anchor, href: pageFile(c), img: c.img, imgAlt: c.imgAlt, cc: c.cc, name: c.card, sub: c.visa, btn: 'View Visa Details' + arrow })),
-    destCard({ id: malaysia.anchor, href: wa('Hello Agha Travel & Tours, I would like help with a Malaysia visit visa.'), external: true, img: malaysia.img, imgAlt: malaysia.imgAlt, cc: malaysia.cc, name: malaysia.card, sub: malaysia.visa, btn: '<i class="fa-brands fa-whatsapp"></i> Enquire on WhatsApp', cls: ' is-wa' }),
   ];
   return `<!-- countries:start (generated by tools/build-country-pages.mjs) -->
 <section class="section-pad bg-off" id="countries">
@@ -551,9 +532,92 @@ ${marquee()}
 <!-- countries:end -->`;
 }
 
+
+/* ---------------- Group Tours page ---------------- */
+function groupToursPage() {
+  const chat = (t) => wa(t);
+  const header = topbarAndHeader.replace('<a href="services.html" class="active">', '<a href="services.html">').replace('<a href="group-tours.html">Group Tours</a>', '<a href="group-tours.html" class="active">Group Tours</a>');
+  return head('Group Tours from Pakistan — China | Agha Travel & Tours', 'Guided group tours from Agha Travel & Tours, Islamabad. Choose China to explore our active and past group tour projects.').replace('</head>', CAVEAT + '</head>')
+  + header + `
+<section class="page-hero">
+  <div class="container">
+    <h1>Group Tours</h1>
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Group Tours</span></div>
+  </div>
+</section>
+
+<section class="section-pad bg-off" id="destinations">
+  <div class="container">
+    <div class="section-head center" data-aos="fade-up">
+      <span class="eyebrow"><i class="fa-solid fa-people-group"></i> Group Travel</span>
+      <h2>Choose a Destination</h2>
+      <p>Guided group tours organised by Agha Travel &amp; Tours. Pick a destination to see our active and past projects.</p>
+    </div>
+
+    <div class="dest-grid single">
+      <article class="dest-item" data-aos="fade-up">
+        <button type="button" class="dest-card gt-trigger is-featured" aria-expanded="false" aria-controls="gt-choose">
+          <div class="dest-media">
+            <img src="${photo(china.hero, 800)}" alt="The Great Wall of China winding over green mountains" loading="lazy">
+            <span class="dest-flag"><img src="${flag('cn')}" alt=""></span>
+          </div>
+          <div class="dest-body">
+            <h3>China</h3>
+            <p>Guided group tours</p>
+            <span class="dest-btn">Explore Projects <i class="fa-solid fa-arrow-down"></i></span>
+          </div>
+        </button>
+      </article>
+    </div>
+
+    <div class="gt-choose" id="gt-choose" hidden>
+      <h3><img src="${flag('cn')}" alt=""> China Group Tours</h3>
+      <p>What would you like to see?</p>
+      <div class="gt-choices">
+        <button type="button" class="gt-choice" data-target="gt-active">
+          <span class="ic"><i class="fa-solid fa-bolt"></i></span>
+          <span><b>Active Projects</b><small>Upcoming tours open for booking</small></span>
+          <i class="fa-solid fa-arrow-right go"></i>
+        </button>
+        <button type="button" class="gt-choice" data-target="gt-past">
+          <span class="ic"><i class="fa-solid fa-clock-rotate-left"></i></span>
+          <span><b>Past Projects</b><small>Tours we have already completed</small></span>
+          <i class="fa-solid fa-arrow-right go"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="gt-panel wide" id="gt-active" hidden>
+      <button type="button" class="gt-back"><i class="fa-solid fa-arrow-left"></i> Back to choices</button>${tourActive({ photo, wa, cantonId: china.img })}
+    </div>
+
+    <div class="gt-panel wide" id="gt-past" hidden>
+      <button type="button" class="gt-back"><i class="fa-solid fa-arrow-left"></i> Back to choices</button>${tourJournal()}
+    </div>
+  </div>
+</section>
+`
+  + lightbox
+  + ctaBanner({
+    titleHtml: 'Plan Your <span>Group Trip</span>',
+    text: 'Tell us where you want to go and how many people are travelling. We will share dates, itineraries and what is included.',
+    bg: china.hero, waHref: chat('Hello Agha Travel & Tours, I would like to know about your group tours.'), waLabel: 'Ask About Group Tours',
+    link: { href: 'contact.html', label: 'Prefer a form? Request a consultation' },
+  })
+  + footer;
+}
+
 /* ---------------- Write files ---------------- */
-for (const c of countries) writeFileSync(pageFile(c), countryPage(c));
+// USA and Canada are handled by a separate WhatsApp line (buttons, links and footer number).
+const WA_OVERRIDE = { usa: ['923003848291', '+92 300 3848291'], canada: ['923003848291', '+92 300 3848291'] };
+for (const c of countries) {
+  let html = countryPage(c);
+  const o = WA_OVERRIDE[c.slug];
+  if (o) html = html.replaceAll(WA, o[0]).replaceAll('+92 300 3848172', o[1]);
+  writeFileSync(pageFile(c), html);
+}
 writeFileSync('china-visa.html', chinaPage());
+writeFileSync('group-tours.html', groupToursPage());
 
 const services = readFileSync('services.html', 'utf8');
 const marker = /<!-- countries:start[\s\S]*?<!-- countries:end -->/;
