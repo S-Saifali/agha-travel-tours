@@ -68,7 +68,7 @@ export const countries = [
     glance: 'The Standard Visitor route generally permits stays of up to 6 months. Long-term visitor visa options of 2, 5 and 10 years are also available, but each visit is normally limited to 6 months. Fees are £135, £506, £903 and £1,128 respectively.',
     who: 'This route covers tourism, visits to family or friends and specified business activities such as meetings, conferences and trade fairs. It does not normally allow taking a regular job in the UK.',
     docs: [
-      { title: 'Core documents', items: ['Valid passport', 'CNIC, FRC and MRC (if married).', 'Evidence of employment or business ownership', 'A clear purpose for your visit', 'Accommodation arrangements'] },
+      { title: 'Core documents', items: ['Valid passport', 'CNIC, FRC and MRC (if married).', 'Evidence of employment or business ownership', 'Last 6 months Bank statement.'] },
       { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in the United Kingdom'] },
     ],
     guidance: 'UKVI assesses whether you are a genuine visitor who can afford the visit and intends to leave. There is no official fixed minimum bank balance; regular income and the source of funds matter.',
