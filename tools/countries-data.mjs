@@ -44,8 +44,8 @@ export const countries = [
     glance: 'A Canadian Temporary Resident Visa may be single or multiple entry. It can be issued for up to 10 years, subject to passport and biometric validity, while visitors are commonly admitted for up to 6 months per visit. Fees are CAD 100 for the application and CAD 85 for biometrics, where applicable.',
     who: 'Tourists, relatives visiting family, friends and eligible business visitors can apply. Business visitors must not enter the Canadian labour market. The planned visit must be temporary and supported by credible travel and financial arrangements.',
     docs: [
-      { title: 'Core documents', items: ['Passport and travel history', 'CNIC or family records, where relevant', 'Bank statements and income evidence', 'Employment or business records', 'A realistic travel plan'] },
-      { title: 'When visiting relatives or friends', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Canada'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 6 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Canada'] },
     ],
     guidance: 'There is no universal minimum bank balance. Your financial evidence should make sense for your trip length, accommodation and who is paying. Avoid unexplained last-minute deposits. Previously submitted Canadian biometrics may still be valid for up to 10 years.',
     help: 'We assess your travel purpose, prepare a tailored checklist, review financial and sponsor evidence and assist with the online IRCC application and document upload.',
@@ -68,7 +68,8 @@ export const countries = [
     glance: 'The Standard Visitor route generally permits stays of up to 6 months. Long-term visitor visa options of 2, 5 and 10 years are also available, but each visit is normally limited to 6 months. Fees are £135, £506, £903 and £1,128 respectively.',
     who: 'This route covers tourism, visits to family or friends and specified business activities such as meetings, conferences and trade fairs. It does not normally allow taking a regular job in the UK.',
     docs: [
-      { items: ['Valid passport', 'Financial and income records', 'Evidence of employment or business ownership', 'A clear purpose for your visit', 'Accommodation arrangements', 'Invitation, relationship and host-status details for hosted trips', 'Translations of any documents not in English or Welsh'] },
+      { title: 'Core documents', items: ['Valid passport', 'CNIC, FRC and MRC (if married).', 'Evidence of employment or business ownership', 'A clear purpose for your visit', 'Accommodation arrangements'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in the United Kingdom'] },
     ],
     guidance: 'UKVI assesses whether you are a genuine visitor who can afford the visit and intends to leave. There is no official fixed minimum bank balance; regular income and the source of funds matter.',
     help: 'We help organize the online application, assess the suitability of your financial records, review sponsor documents and prepare your file for submission.',
@@ -91,7 +92,8 @@ export const countries = [
     glance: 'Australia’s Visitor visa (subclass 600) includes Tourist and Business Visitor streams. The stay, entry count and visa validity depend on the individual grant, so always check your grant letter.',
     who: 'The Tourist stream covers holidays and visits to relatives or friends. The Business Visitor stream permits specified short business activities but not ordinary employment in Australia.',
     docs: [
-      { items: ['Valid passport', 'Travel purpose and itinerary', 'Bank statements and source-of-funds information', 'Employment or business documents', 'Travel history', 'Evidence of family ties', 'Invitations and host documents for family visits'] },
+      { title: 'Core documents', items: ['Valid passport', 'CNIC, FRC and MRC (if married).', 'Bank statements and source-of-funds information', 'Employment or business documents'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Australia'] },
     ],
     guidance: 'There is no universal official PKR bank-balance figure that guarantees a Visitor visa. Financial resources should match the proposed visit. Pakistani applicants may be instructed to provide biometrics after lodging.',
     help: 'We assess the appropriate stream, prepare a tailored document checklist, review financial and sponsor evidence and help complete the online application.',
@@ -114,7 +116,8 @@ export const countries = [
     glance: 'A short-stay Schengen visa can permit travel within the 29-country Schengen Area, subject to its entry count, validity and permitted days. The standard framework is up to 90 days in any 180-day period, although individual Pakistani applicants may receive shorter grants. Fees are EUR 90 for adults and EUR 45 for children aged 6–11.',
     who: 'Apply to the country that is your main destination, normally based on your main purpose or longest stay. Where no main destination can be identified, first entry can determine the correct consulate. Applying to whichever country seems easiest is not the right approach.',
     docs: [
-      { items: ['Valid passport', 'Travel itinerary', 'Hotel or host arrangements', 'Proof of sufficient funds', 'Proof of work or business', 'Travel medical insurance', 'Documents explaining the purpose of the trip'] },
+      { title: 'Core documents', items: ['Valid passport', 'CNIC, FRC and MRC (if married).', 'Last 6 Month Bank statement.', 'Employment or Business Records'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in the Schengen Area'] },
     ],
     docsNote: 'Requirements vary by consulate.',
     guidance: 'Single-entry, double-entry and multiple-entry visas are possible. Your visa sticker specifies the authorized days and entries. A longer validity does not override the applicable short-stay limits.',
@@ -138,7 +141,8 @@ export const countries = [
     glance: 'A New Zealand Visitor Visa may allow a stay of up to 6 or 9 months, depending on the grant. Costs start from NZD 441, and a published indicator shows 80% of applications processed in approximately 2 weeks. Neither figure should be treated as fixed.',
     who: 'The standard visitor route is for tourism, leisure and family or friends visits. New Zealand has a separate Business Visitor Visa for qualifying short business activities, generally up to 3 months in a year.',
     docs: [
-      { items: ['Valid passport', 'Travel plan', 'Identity and family records, where relevant', 'Income or business evidence', 'Proof of accommodation', 'Host’s details and relationship evidence, if visiting someone'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 6 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in New Zealand'] },
     ],
     guidance: 'Self-funded visitors should show NZD 1,000 per person per month, or NZD 400 per month where accommodation is prepaid, plus return travel or the means to purchase it. An eligible formal sponsor may instead meet the prescribed obligations; an invitation alone is not formal sponsorship.',
     help: 'We review your genuine-visitor explanation, financial evidence, sponsorship eligibility and supporting documents, then help prepare the online application.',
@@ -161,7 +165,8 @@ export const countries = [
     glance: 'A Japanese single-entry temporary visitor visa is generally valid for around 3 months, with the authorized stay determined by the visa issued. Visa validity and permitted stay should not be confused.',
     who: 'Tourism, family and friends visits and eligible business travel have different documentary requirements. Your stated travel purpose, daily itinerary and supporting evidence must agree.',
     docs: [
-      { items: ['Valid passport', 'Completed application and photograph', 'Financial evidence', 'Professional or business records', 'A clear day-by-day travel plan', 'Hotel information and travel reservations, where relevant', 'Previous travel history'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 3 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Japan'] },
     ],
     guidance: 'Applicants visiting relatives or friends may need an invitation, relationship evidence and supporting documents from Japan. Business visitors may need an invitation and details of the inviting company. There is no universal official PKR bank-balance threshold.',
     help: 'Our team helps structure the itinerary, review your financial and occupational profile, organize host or business documents and prepare a coherent application.',
@@ -184,7 +189,8 @@ export const countries = [
     glance: 'C-3-9 is the general tourist category, with a possible stay of up to 90 days subject to the actual visa issued. Other short-term categories may apply to family or business travel.',
     who: 'Choose the category matching your genuine purpose. A tourist itinerary is different from a visit sponsored by a Korean resident or a business trip to a Korean company.',
     docs: [
-      { items: ['Valid passport', 'Visa application and photograph', 'Financial statements', 'Occupation or business proof', 'Travel plan', 'Relevant personal records'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 6 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in South Korea'] },
     ],
     docsNote: 'Documents requested by the Korean mission may differ by category.',
     guidance: 'For family or business cases, invitation and guarantee documents may be required, in some circumstances as original or notarized copies. Check the category-specific checklist rather than assuming a simple invitation is sufficient.',
@@ -208,7 +214,8 @@ export const countries = [
     glance: 'Pakistani travellers generally need a visa. Depending on eligibility, the route may be a sticker visa or an online e-Visa. A conditional one-month, single-entry e-Visa is available to eligible Pakistani applicants.',
     who: 'The e-Visa is not automatically available to every Pakistani passport holder. Eligibility depends on meeting the official system’s conditions; otherwise a sticker visa application is required.',
     docs: [
-      { title: 'For a sticker visa, expect', items: ['Valid passport', 'Application and photograph', 'Travel and accommodation details', 'Financial evidence', 'Employment or business records', 'Relevant family documents', 'Host or business invitation, where your travel purpose needs one'] },
+      { title: 'For a sticker visa, expect', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 3 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Turkey'] },
     ],
     guidance: 'Do not rely on an e-Visa simply because you hold another country’s visa or residence permit; all current conditions must be satisfied. Visa validity and permitted stay are those shown on the approval.',
     help: 'We check which visa route fits your circumstances, help organize the required documents and guide the correct submission procedure.',
@@ -231,7 +238,8 @@ export const countries = [
     glance: 'Hong Kong operates its own immigration system, separate from mainland China, so a mainland Chinese visa does not automatically authorize entry into Hong Kong. The ordinary Hong Kong visit visa fee is HKD 330.',
     who: 'Visitors may travel for tourism, family and friends visits or permitted business activities. The actual period of stay is determined by Hong Kong Immigration and the permission issued.',
     docs: [
-      { items: ['Valid passport', 'Application details', 'Travel plan', 'Accommodation information', 'Bank or income evidence', 'Employment or business records', 'Sponsor or inviter details and the reason for the visit, if hosted'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 6 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Hong Kong'] },
     ],
     guidance: 'Hong Kong does not publish one universal fixed PKR minimum bank balance for all applicants. Financial evidence should reasonably cover the planned trip. Sponsorship or an invitation does not guarantee approval.',
     help: 'We assist with the appropriate visit route, review financial and sponsor documentation, prepare supporting information and guide the submission process.',
@@ -254,7 +262,8 @@ export const countries = [
     glance: 'A South African visitor visa can allow temporary visits, commonly up to 90 days depending on the visa issued. Pakistani passport holders should obtain the appropriate authorization before travelling.',
     who: 'Tourism, hosted family trips and short permitted business visits require a genuine reason for travel and documents supporting that purpose.',
     docs: [
-      { items: ['Valid passport', 'Application and photographs', 'Trip and accommodation details', 'Evidence of finances', 'Employment or business information', 'Other documents on the current mission checklist'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 3 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in South Africa'] },
     ],
     guidance: 'A family or friends visit may call for a written host invitation and details of the host’s status or address. Business trips may require an invitation from the South African organization. Additional documents may depend on travel circumstances.',
     help: 'We help assess the visitor purpose, organize financial and host evidence, check document consistency and prepare a clear submission package.',
@@ -277,7 +286,8 @@ export const countries = [
     glance: 'Morocco has both conventional visa procedures and an eVisa route for applicants who meet specific eligibility conditions. The correct route depends on the applicant’s nationality, residence and qualifying documents.',
     who: 'Pakistani applicants should not assume they qualify for an eVisa. First determine eligibility through the official Moroccan system; otherwise follow the consular visa route.',
     docs: [
-      { items: ['Valid passport', 'Application and photograph', 'Travel plan', 'Accommodation details', 'Financial evidence', 'Employment or business records', 'Host or business invitation for sponsored or commercial visits'] },
+      { title: 'Core documents', items: ['Valid Passport', 'CNIC, FRC and MRC (if married).', 'Last 6 months Bank statement.', 'Business or Employment details.'] },
+      { title: 'When visiting relatives, friends or for business', items: ['Host invitation', 'Proof of relationship', 'Your host’s status in Morocco'] },
     ],
     guidance: 'eVisa validity is different from your permitted stay, so always follow the dates and duration shown on the actual authorization. There is no universal PKR minimum bank balance applicable to every applicant.',
     help: 'We check visa-route eligibility, review the purpose of travel, organize financial and invitation documents and assist with the appropriate application process.',
